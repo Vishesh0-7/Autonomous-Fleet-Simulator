@@ -1,0 +1,185 @@
+.fleet-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.fleet-grid {
+  display: grid;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.grid-cell {
+  background: rgba(26, 31, 46, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.2s ease;
+}
+
+.grid-cell:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* Robot Styles */
+.robot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.robot-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.robot:hover .robot-circle {
+  transform: scale(1.2);
+  z-index: 20;
+  border-width: 3px;
+}
+
+.robot-id {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Battery Indicator */
+.battery-indicator {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.robot:hover .battery-indicator {
+  opacity: 1;
+}
+
+.battery-bar {
+  height: 100%;
+  transition: width 0.5s ease, background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Status Badge */
+.status-badge {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: rgba(15, 20, 25, 0.95);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid;
+  opacity: 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 30;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.robot:hover .status-badge {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+/* Legend */
+.grid-legend {
+  background: rgba(26, 31, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.grid-legend h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 0.75rem 0;
+}
+
+.legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 8px currentColor;
+}
+
+.legend-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fleet-grid {
+    max-width: 90vw;
+  }
+  
+  .grid-legend {
+    padding: 0.75rem 1rem;
+  }
+  
+  .legend-items {
+    gap: 0.75rem;
+  }
+}
